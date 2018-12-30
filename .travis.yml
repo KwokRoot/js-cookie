@@ -11,7 +11,14 @@ node_js:
 cache:
   directories:
     - node_modules
-# Only use grunt-ci for commits pushed to this repo. Fall back to regular test
-# for pull requests (as secure variables won't be exposed there).
-script:
-  - ./travis.sh
+stages:
+  - test
+  - name: browserstack
+    if: env(BROWSERSTACK_USERNAME) IS present
+jobs:
+  include:
+    - stage: test
+      script: npm test
+    - stage: browserstack
+      script: grunt ci --verbose
+      node_js: '10'
