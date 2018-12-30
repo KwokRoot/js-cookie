@@ -106,7 +106,7 @@ module.exports = function (grunt) {
 			}
 		},
 		exec: {
-			'browserstack-runner': 'node_modules/.bin/browserstack-runner'
+			'browserstack-runner': 'node_modules/.bin/browserstack-runner --verbose'
 		}
 	});
 

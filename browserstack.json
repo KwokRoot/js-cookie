@@ -9,28 +9,6 @@
     "test_server_port": "9998",
     "exit_with_fail": true,
     "browsers": [
-        "chrome_previous",
-        "chrome_latest",
-        "firefox_previous",
-        "firefox_latest",
-        "ie_6",
-        "ie_7",
-        "ie_8",
-        "ie_9",
-        "ie_10",
-        "ie_11",
-        "opera_latest",
-        {
-            "browser": "safari",
-            "browser_version": "latest",
-            "os": "OS X",
-            "os_version": "High Sierra"
-        },
-        {
-            "browser": "safari",
-            "browser_version": "latest",
-            "os": "OS X",
-            "os_version": "Sierra"
-        }
+        "chrome_previous"
     ]
 }
