@@ -6,6 +6,7 @@
         "test/environment-with-amd-and-umd.html",
         "test/encoding.html?integration_baseurl=http://127.0.0.1:9998/"
     ],
+    "test_server_port": "9998",
     "exit_with_fail": true,
     "browsers": [
         "chrome_previous",
