@@ -50,13 +50,7 @@ JavaScript Cookie supports [npm](https://www.npmjs.com/package/js-cookie) and [B
 
 ### Module Loaders
 
-JavaScript Cookie can also be loaded as an AMD, CommonJS or [ES6](https://github.com/js-cookie/js-cookie/issues/233#issuecomment-233187386) module.
-
-#### ES6
-
-```javascript
-import Cookies from 'js-cookie';
-```
+JavaScript Cookie can also be loaded as an AMD or CommonJS module.
 
 ## Basic Usage
 
@@ -91,6 +85,16 @@ Read all visible cookies:
 Cookies.get(); // => { name: 'value' }
 ```
 
+*Note: It is not possible to read a particular cookie by passing one of the cookie attributes (which may or may not
+have been used when writing the cookie in question):*
+
+```javascript
+Cookies.get('foo', { domain: 'sub.example.com' }); // `domain` won't have any effect...!
+```
+
+The cookie with the name `foo` will only be available on `.get()` if it's visible from where the
+code is called; the domain and/or path attribute will not have an effect when reading.
+
 Delete cookie:
 
 ```javascript
@@ -105,7 +109,11 @@ Cookies.remove('name'); // fail!
 Cookies.remove('name', { path: '' }); // removed!
 ```
 
-*IMPORTANT! When deleting a cookie, you must pass the exact same path and domain attributes that were used to set the cookie, unless you're relying on the [default attributes](#cookie-attributes).*
+*IMPORTANT! When deleting a cookie and you're not relying on the [default attributes](#cookie-attributes), you must pass the exact same path and domain attributes that were used to set the cookie:*
+
+```javascript
+Cookies.remove('name', { path: '', domain: '.yourdomain.com' });
+```
 
 *Note: Removing a nonexistent cookie does not raise any exception nor return any value.*
 
@@ -158,6 +166,8 @@ Cookies.getJSON(); // => { name: { foo: 'bar' } }
 This project is [RFC 6265](http://tools.ietf.org/html/rfc6265#section-4.1.1) compliant. All special characters that are not allowed in the cookie-name or cookie-value are encoded with each one's UTF-8 Hex equivalent using [percent-encoding](http://en.wikipedia.org/wiki/Percent-encoding).  
 The only character in cookie-name or cookie-value that is allowed and still encoded is the percent `%` character, it is escaped in order to interpret percent input as literal.  
 Please note that the default encoding/decoding strategy is meant to be interoperable [only between cookies that are read/written by js-cookie](https://github.com/js-cookie/js-cookie/pull/200#discussion_r63270778). To override the default encoding/decoding strategy you need to use a [converter](#converters).
+
+*Note: According to [RFC 6265](https://tools.ietf.org/html/rfc6265#section-6.1), your cookies may get deleted if they are too big or there are too many cookies in the same domain, [more details here](https://github.com/js-cookie/js-cookie/wiki/Frequently-Asked-Questions#why-are-my-cookies-being-deleted).*
 
 ## Cookie Attributes
 

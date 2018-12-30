@@ -1,6 +1,6 @@
 'use strict';
 
-/*global lifecycle: true*/
+/* global lifecycle: true */
 
 QUnit.module('read', lifecycle);
 
@@ -149,6 +149,7 @@ QUnit.test('String primitive', function (assert) {
 });
 
 QUnit.test('String object', function (assert) {
+	/* eslint-disable no-new-wrappers */
 	assert.expect(1);
 	Cookies.set('c', new String('v'));
 	assert.strictEqual(Cookies.get('c'), 'v', 'should write value');
@@ -180,10 +181,10 @@ QUnit.test('undefined', function (assert) {
 
 QUnit.test('expires option as days from now', function (assert) {
 	assert.expect(1);
-	var expires = new Date();
-	expires.setDate(expires.getDate() + 1);
+	var days = 200;
+	var expires = new Date(new Date().valueOf() + days * 24 * 60 * 60 * 1000);
 	var expected = 'expires=' + expires.toUTCString();
-	var actual = Cookies.set('c', 'v', { expires: 1 });
+	var actual = Cookies.set('c', 'v', { expires: days });
 	assert.ok(actual.indexOf(expected) !== -1, quoted(actual) + ' includes ' + quoted(expected));
 });
 
@@ -421,7 +422,7 @@ QUnit.test('Array Literal', function (assert) {
 });
 
 QUnit.test('Array Constructor', function (assert) {
-	/*jshint -W009 */
+	/* eslint-disable no-array-constructor */
 	assert.expect(2);
 	var value = new Array();
 	value[0] = 'v';
@@ -438,7 +439,7 @@ QUnit.test('Object Literal', function (assert) {
 });
 
 QUnit.test('Object Constructor', function (assert) {
-	/*jshint -W010 */
+	/* eslint-disable no-new-object */
 	assert.expect(2);
 	var value = new Object();
 	value.k = 'v';
@@ -472,6 +473,11 @@ QUnit.test('Cookies with escaped quotes in json using raw converters', function 
 	}).set('c', '"{ \\"foo\\": \\"bar\\" }"');
 	assert.strictEqual(Cookies.getJSON('c'), '{ "foo": "bar" }', 'returns JSON parsed cookie');
 	assert.strictEqual(Cookies.get('c'), '{ \\"foo\\": \\"bar\\" }', 'returns unparsed cookie with enclosing quotes removed');
+});
+
+QUnit.test('Prevent accidentally writing cookie when passing unexpected argument', function (assert) {
+	Cookies.getJSON('c', { foo: 'bar' });
+	assert.strictEqual(Cookies.get('c'), undefined, 'should not write any cookie');
 });
 
 QUnit.module('noConflict', lifecycle);

@@ -3,11 +3,15 @@ addons:
     username: "klaushartl1"
     access_key:
       secure: "LpBr6ShBiV3Ai8YeHi44tRNHsqg1nj5rqCSZlHRG4dq59S2lmXGQjaOUVGBT5D1Omo0FKCRrky3hREt0hioWCo6hhEnRDBkNdHe4oD/4UmCyNr7n285sJaeJCMgzGcG/+aUDziiM+YlfbxN8Rp+TZ5AGnq83bxJkmQL26GKBdtA="
-
 language: node_js
-
 node_js:
   - '6'
-
+  - '8'
+  - '10'
+cache:
+  directories:
+    - node_modules
+# Only use grunt-ci for commits pushed to this repo. Fall back to regular test
+# for pull requests (as secure variables won't be exposed there).
 script:
   - ./travis.sh
