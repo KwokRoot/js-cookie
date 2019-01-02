@@ -17,8 +17,6 @@ stages:
     if: env(BROWSERSTACK_USERNAME) IS present
 jobs:
   include:
-    - stage: test
-      script: npm test
     - stage: browserstack
-      script: grunt ci --verbose
       node_js: '10'
+      script: grunt ci --verbose
