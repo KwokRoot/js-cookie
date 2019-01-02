@@ -2,7 +2,7 @@ addons:
   browserstack:
     username: "klaushartl1"
     access_key:
-      secure: "LpBr6ShBiV3Ai8YeHi44tRNHsqg1nj5rqCSZlHRG4dq59S2lmXGQjaOUVGBT5D1Omo0FKCRrky3hREt0hioWCo6hhEnRDBkNdHe4oD/4UmCyNr7n285sJaeJCMgzGcG/+aUDziiM+YlfbxN8Rp+TZ5AGnq83bxJkmQL26GKBdtA="
+      secure: "c5aqwPGpsY+EQw4BLZY3tdRVQjUglGSzhVEfC98jjw5l8M6nm4dFIs4p36Nidc0KSfjiws+VUWc+rW53AjtbG/C0b67hKwFWfnfV/Tacan2NbrR7Hsgdx0wpC4YSZv+prYjfbXIdncReITsxBf27lysAHzmTkx76+AZtgUBTNK8="
 language: node_js
 node_js:
   - '6'
