@@ -118,7 +118,7 @@ module.exports = function (grunt) {
 	}
 
 	grunt.registerTask('test', ['uglify', 'eslint', 'connect:build-qunit', 'qunit', 'nodeunit']);
-	grunt.registerTask('browserstack', ['exec:browserstack-runner']);
+	grunt.registerTask('browserstack', ['uglify', 'exec:browserstack-runner']);
 
 	grunt.registerTask('dev', ['test', 'compare_size']);
 
