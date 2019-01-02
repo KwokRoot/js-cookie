@@ -1,8 +1,7 @@
 addons:
   browserstack:
-    username: "klaushartl1"
-    access_key:
-      secure: "c5aqwPGpsY+EQw4BLZY3tdRVQjUglGSzhVEfC98jjw5l8M6nm4dFIs4p36Nidc0KSfjiws+VUWc+rW53AjtbG/C0b67hKwFWfnfV/Tacan2NbrR7Hsgdx0wpC4YSZv+prYjfbXIdncReITsxBf27lysAHzmTkx76+AZtgUBTNK8="
+    username: ${BROWSERSTACK_USERNAME}
+    access_key: ${BROWSERSTACK_ACCESS_KEY}
 language: node_js
 node_js:
   - '6'
