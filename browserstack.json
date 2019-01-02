@@ -3,7 +3,6 @@
     "test_path": [
         "test/index.html"
     ],
-    "test_server_port": "9998",
     "exit_with_fail": true,
     "browsers": [
         "chrome_previous"
