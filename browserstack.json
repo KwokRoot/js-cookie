@@ -5,6 +5,7 @@
     ],
     "exit_with_fail": true,
     "browsers": [
-        "chrome_previous"
+        "chrome_previous",
+        "ie_9"
     ]
 }
