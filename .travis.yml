@@ -18,4 +18,4 @@ jobs:
   include:
     - stage: browserstack
       node_js: '10'
-      script: grunt exec:browserstack-runner
+      script: grunt browserstack
