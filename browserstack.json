@@ -1,10 +1,7 @@
 {
     "test_framework" : "qunit",
     "test_path": [
-        "test/index.html",
-        "test/amd.html",
-        "test/environment-with-amd-and-umd.html",
-        "test/encoding.html?integration_baseurl=http://127.0.0.1:9998/"
+        "test/index.html"
     ],
     "test_server_port": "9998",
     "exit_with_fail": true,
