@@ -228,7 +228,7 @@ A [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/G
 Assuming a cookie that is being created on `site.com`:
 
 ```javascript
-Cookies.set('name', 'value', { domain: 'subdomain.site.com' });
+Cookies.set('name', 'value', { domain: 'site.com' });
 Cookies.get('name'); // => undefined (need to read at 'subdomain.site.com')
 ```
 
